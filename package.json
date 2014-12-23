@@ -1,0 +1,15 @@
+{
+  "name": "opentok",
+  "version": "1.0.0",
+  "description": "OpenTok session server",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Nathan Bryan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.10.6",
+    "opentok": "^2.2.4"
+  }
+}
