@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title Needed</title>
+    <script src="//static.opentok.com/webrtc/v2.2/js/opentok.min.js"></script>
+    <script type="text/javascript">
+
+      document.addEventListener('DOMContentLoaded', function(e) {
+        var session = OT.initSession('45110572', '<%= sessionId %>');
+
+        session.on({
+          streamCreated: function (e) {
+            session.subscribe(e.stream, 'streams', {
+              insertMode: 'append'
+            });
+          }
+        });
+
+        session.connect('<%= token %>', function(err) {
+          var publisher = OT.initPublisher();
+          session.publish(publisher);
+        });
+      });
+
+    </script>
+  </head>
+  <body>
+    <div id="streams"></div>
+  </body>
+</html>

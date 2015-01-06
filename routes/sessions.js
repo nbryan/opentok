@@ -20,6 +20,18 @@ exports.create = function(req, res, next) {
   });
 };
 
+exports.show = function(req, res, next) {
+  var token = opentok.generateToken(req.params.sessionId, {
+    role: 'publisher',
+    expireTime: (Date.now() / 1000.0) + (30 * 24 * 60 * 60)
+  });
+
+  res.render('sessions/show', {
+    sessionId: req.params.sessionId,
+    token: token
+  });
+};
+
 exports.createToken = function(req, res, next) {
   var token = opentok.generateToken(req.params.sessionId, {
     role: 'publisher',
